@@ -1,0 +1,209 @@
+body {
+  background: #000 url("images/background.png") center/cover no-repeat fixed;
+  color: #fff;
+  font-family: 'Press Start 2P', monospace;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  text-align: center;
+}
+
+
+/* ====== FLICKERING PIXEL ====== */
+@keyframes flicker {
+  0%, 18%, 22%, 25%, 53%, 57%, 100% {
+    box-shadow: 0 0 8px #00ff99, 0 0 2px #fff inset;
+  }
+  20%, 24%, 55% {
+    box-shadow: 0 0 3px #00ff99, 0 0 1px #fff inset;
+  }
+}
+
+/* ====== INTRO ====== */
+.arcade-border {
+  border: 8px solid #00ff99;
+  border-radius: 24px;
+  padding: 48px 32px;
+  box-shadow: 0 0 32px #00ff99;
+  background: rgba(0, 0, 0, 0.85);
+  animation: flicker 2s infinite;
+  width: 90%;
+  max-width: 900px;
+  margin: auto;
+}
+
+h1 {
+  text-shadow: 0 0 8px #00ff99, 0 0 2px #fff;
+  margin-bottom: 20px;
+}
+
+.press-prompt {
+  color: #00ff99;
+  margin-top: 30px;
+  display: none;
+  animation: flickerPrompt 1s steps(2, start) infinite;
+}
+
+@keyframes flickerPrompt {
+  50% { opacity: 0; }
+}
+
+/* ====== MAIN SECTIONS ====== */
+.profile-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 32px;
+  flex-wrap: wrap;
+  max-width: 1000px;
+  margin: 50px auto;
+}
+
+img {
+  width: 300px;
+}
+
+button {
+  font-family: 'Press Start 2P', monospace;
+  background: #000;
+  color: #0ff;
+  border: 2px solid #0ff;
+  border-radius: 8px;
+  padding: 12px 20px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+#pressStart {
+  font-family: 'Press Start 2P', monospace;
+  color: #0ff;
+  margin-top: 20px;
+  animation: flickerPrompt 1s steps(2, start) infinite;
+}
+
+button:hover {
+  background: #0ff;
+  color: #000;
+}
+
+/* ====== NAV ARROWS ====== */
+.nav-arrows {
+  position: fixed;
+  bottom: 40px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 60px;
+  pointer-events: none;
+}
+
+.nav-arrows button {
+  pointer-events: auto;
+  font-family: 'Press Start 2P';
+  font-size: 20px;
+  padding: 18px 26px;
+  background: black;
+  color: lime;
+  border: 3px solid lime;
+  border-radius: 12px;
+  box-shadow: 0 0 12px lime, inset 0 0 6px #00ff99;
+  cursor: pointer;
+  transition: 0.15s;
+  animation: arrowPulse 2s infinite alternate ease-in-out;
+}
+
+@keyframes arrowPulse {
+  0%,100% { box-shadow: 0 0 10px lime, inset 0 0 5px #00ff99; }
+  50% { box-shadow: 0 0 18px #00ffcc, inset 0 0 8px lime; }
+}
+
+
+/* ====== NAV ARROWS (fixed positioning) ====== */
+.nav-arrows {
+  position: fixed;
+  bottom: 40px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 30px; /* reduced spacing so arrows stay visible */
+  pointer-events: none;
+  box-sizing: border-box;
+}
+
+.nav-arrows button {
+  pointer-events: auto;
+  font-family: 'Press Start 2P';
+  font-size: 20px;
+  padding: 18px 26px;
+  background: black;
+  color: lime;
+  border: 3px solid lime;
+  border-radius: 12px;
+  box-shadow: 0 0 12px lime, inset 0 0 6px #00ff99;
+  cursor: pointer;
+  transition: 0.15s;
+  animation: arrowPulse 2s infinite alternate ease-in-out;
+  position: relative;
+  z-index: 5;
+}
+
+/* Ensure arrows are visible on all screen sizes */
+.left-arrow {
+  margin-left: 20px;
+}
+.right-arrow {
+  margin-right: 20px;
+}
+
+.nav-arrows button:hover {
+  transform: scale(1.1);
+  background: lime;
+  color: black;
+  box-shadow: 0 0 16px lime, 0 0 8px #fff;
+}
+
+.nav-arrows button:active {
+  transform: scale(0.95);
+}
+
+@keyframes arrowPulse {
+  0%,100% { box-shadow: 0 0 10px lime, inset 0 0 5px #00ff99; }
+  50% { box-shadow: 0 0 18px #00ffcc, inset 0 0 8px lime; }
+}
+/* ====== RESPONSIVE ====== */
+@media (max-width: 768px) {   
+  .profile-container {
+    flex-direction: column;
+    gap: 24px;
+    padding: 0 10px;
+  }
+
+  img {
+    width: 90%;
+    max-width: 300px;
+  }
+
+  .nav-arrows button {
+    font-size: 16px;
+    padding: 14px 20px;
+  }
+}
+@keyframes stare {
+  0% { transform: rotate(0deg); }
+  50% { transform: rotate(5deg); }
+  100% { transform: rotate(0deg); }
+}
+
+.animate-stare {
+  animation: stare 1s ease-in-out;
+}
+html, body.portfolio-cursor {
+  cursor: url('images/cursor.png'), auto;
+}
+.portfolio-buttons, .contact-buttons, .aboutMe {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
